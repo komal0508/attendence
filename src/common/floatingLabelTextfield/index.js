@@ -124,7 +124,7 @@ class FloatLabelTextField extends Component {
     this.onChangeTextHandler = this.onChangeTextHandler.bind(this);
     this.checkType = this.checkType.bind(this);
     this.errorDisplay = this.errorDisplay.bind(this);
-    this.iconDisplay = this.iconDisplay.bind(this);
+    //  this.iconDisplay = this.iconDisplay.bind(this);
     this.input = React.createRef();
   }
 
@@ -195,9 +195,17 @@ class FloatLabelTextField extends Component {
   labelStyle() {
     const { focused } = this.state;
     const { type } = this.props;
-    let width = 100;
-    if (type === "password") {
-      width = 60;
+    let width = 60;
+    if (type === "email") {
+      width = 100;
+    } else if (type === "randomValue") {
+      width = 85;
+    } else if (type === "fixedValue") {
+      width = 70;
+    } else if (type === "empId" || type === "contact") {
+      width = 50;
+    } else if (type === "salary") {
+      width = 40;
     }
     let fieldLabel = styles.fieldLabel;
     if (focused) {
@@ -253,6 +261,12 @@ class FloatLabelTextField extends Component {
       if (inputType === "email") {
         inputFieldSettings = {
           keyboardType: "email-address",
+          secureTextEntry: false
+        };
+      }
+      if (inputType === "number") {
+        inputFieldSettings = {
+          keyboardType: "numeric",
           secureTextEntry: false
         };
       }
@@ -335,43 +349,43 @@ class FloatLabelTextField extends Component {
     );
   }
 
-  iconDisplay() {
-    const { type } = this.props;
-    if (type && type !== "" && type !== undefined) {
-      if (type === "email") {
-        return (
-          <View>
-            <Image
-              source={Email}
-              style={{
-                height: deviceHeight * 0.02,
-                width: deviceWidth * 0.1
-              }}
-              resizeMode="contain"
-            />
-          </View>
-        );
-      }
-      if (
-        type === "password" ||
-        type === "confirmPassword" ||
-        type === "oldPassword"
-      ) {
-        return (
-          <View>
-            <Image
-              source={Password}
-              style={{
-                height: deviceHeight * 0.025,
-                width: deviceWidth * 0.1
-              }}
-              resizeMode="contain"
-            />
-          </View>
-        );
-      }
-    }
-  }
+  // iconDisplay() {
+  //   const { type } = this.props;
+  //   if (type && type !== "" && type !== undefined) {
+  //     if (type === "email") {
+  //       return (
+  //         <View>
+  //           <Image
+  //             source={Email}
+  //             style={{
+  //               height: deviceHeight * 0.02,
+  //               width: deviceWidth * 0.1
+  //             }}
+  //             resizeMode="contain"
+  //           />
+  //         </View>
+  //       );
+  //     }
+  //     if (
+  //       type === "password" ||
+  //       type === "confirmPassword" ||
+  //       type === "oldPassword"
+  //     ) {
+  //       return (
+  //         <View>
+  //           <Image
+  //             source={Password}
+  //             style={{
+  //               height: deviceHeight * 0.025,
+  //               width: deviceWidth * 0.1
+  //             }}
+  //             resizeMode="contain"
+  //           />
+  //         </View>
+  //       );
+  //     }
+  //   }
+  // }
 
   checkType() {
     const { type } = this.props;
