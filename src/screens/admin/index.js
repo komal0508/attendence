@@ -1,18 +1,6 @@
 import React, { Component } from "react";
-//import base64 from 'base-64';
-//import utf8 from 'utf8';
-
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Platform,
-  Alert,
-  ScrollView,
-  Image
-} from "react-native";
+import { View, Text, TouchableOpacity, Alert, Image } from "react-native";
 import styles from "./styles";
-import { connect } from "react-redux";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import StatusBar from "../../common/statusBar";
 import TitleHeader from "../../common/titleHeader";
@@ -26,12 +14,6 @@ import {
   valid,
   invalidEmail
 } from "../../common/constants";
-
-//import ImagePicker from 'react-native-imagepicker';
-import * as RegisterActions from "../../controllers/redux/auth/action";
-
-import { register } from "../../controllers/api/auth";
-
 import MahiLogo from "../../images/mahiLogo.jpeg";
 
 class Admin extends Component {
@@ -68,18 +50,9 @@ class Admin extends Component {
     return valid;
   }
 
-  handleUserLogin() {
-    const { email, password } = this.state;
-    // const { navigation } = this.props;
-    // console.log('email && password', email, password);
-  }
+  handleUserLogin() {}
 
-  handleForgotPassword() {
-    const { navigation } = this.props;
-    // if (navigation) {
-    //   navigation.navigate('ResetPassword');
-    // }
-  }
+  handleForgotPassword() {}
   handleGoBack() {
     const { navigation } = this.props;
     if (navigation) {
@@ -182,16 +155,5 @@ class Admin extends Component {
     );
   }
 }
-// const mapStateToProps = state => ({
-//   // feeds: state.feedHome.feeds,
-// });
 
-// const mapActionsToProps = dispatch => ({
-//  // register: data => dispatch(RegisterActions.register(data)),
-// });
-
-// export default connect(
-//   mapStateToProps,
-//   mapActionsToProps
-// )(HomeScreen);
 export default Admin;
